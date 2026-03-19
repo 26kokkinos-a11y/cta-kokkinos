@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA Kokkinos Constructions LTD</title>
+  <meta name="description" content="CTA Kokkinos Constructions LTD — quality construction services across Cyprus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red: #E31B23;
+      --red-dark: #B71518;
+      --white: #FFFFFF;
+      --off-white: #F5F2EE;
+      --dark: #1A1A1A;
+      --gray: #6B6B6B;
+      --gray-light: #A0A0A0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--red); margin-bottom: 8px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: 1px; margin-bottom: 40px; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,26,26,0.95); backdrop-filter: blur(10px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: 960px; margin: 0 auto; }
+    .nav-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-link .logo-icon { height: 32px; width: auto; }
+    .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--white); line-height: 1; }
+    .nav-logo-text .cta { color: var(--red); }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--gray-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--red); color: var(--white) !important; padding: 8px 20px; font-weight: 700; transition: background 0.3s; }
+    .nav-cta:hover { background: var(--red-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links { position: fixed; top: 56px; left: 0; right: 0; background: rgba(26,26,26,0.98); flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; transform: translateY(-120%); transition: transform 0.3s; }
+      .nav-links.open { transform: translateY(0); }
+    }
+
+    /* HERO */
+    .hero { min-height: 80vh; display: flex; align-items: center; background: var(--dark); padding: 100px 0 80px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; top: -30%; right: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(227,27,35,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-logo { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .hero-logo .logo-icon { height: 72px; width: auto; }
+    .hero-logo-text { display: flex; flex-direction: column; gap: 2px; }
+    .hero-logo-main { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 2px; color: var(--white); line-height: 1; }
+    .hero-logo-main .cta { color: var(--red); }
+    .hero-logo-sub { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 3px; color: var(--gray-light); text-transform: uppercase; }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 8vw, 5.5rem); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 20px; }
+    .hero h1 .accent { color: var(--red); }
+    .hero p { font-size: 1.05rem; color: var(--gray-light); max-width: 460px; line-height: 1.7; margin-bottom: 32px; }
+    .btn { display: inline-block; padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s; }
+    .btn-primary { background: var(--red); color: var(--white); }
+    .btn-primary:hover { background: var(--red-dark); }
+
+    /* SERVICES */
+    .services { padding: 80px 0; background: var(--off-white); }
+    .services-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .service-item { background: var(--white); padding: 28px 24px; border: 1px solid rgba(0,0,0,0.06); }
+    .service-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 6px; }
+    .service-item p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+    @media (max-width: 640px) { .services-list { grid-template-columns: 1fr; } }
+
+    /* GALLERY */
+    .gallery { padding: 80px 0; background: var(--white); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gallery-item {
+      aspect-ratio: 4/3; background: var(--off-white);
+      border: 1px solid rgba(0,0,0,0.06); overflow: hidden;
+      position: relative; cursor: pointer;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item .placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--gray-light); gap: 8px;
+    }
+    .placeholder-icon { font-size: 1.8rem; opacity: 0.4; }
+    .placeholder-text { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.5; }
+    .gallery-item .label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: var(--white); padding: 24px 12px 10px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px;
+    }
+    @media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 40px; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 85vh; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.3s; }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--white); font-size: 2.5rem; cursor: pointer; opacity: 0.5; transition: opacity 0.3s; padding: 8px; }
+    .lightbox-nav:hover { opacity: 1; }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* CONTACT */
+    .contact { padding: 80px 0; background: var(--off-white); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.7; margin-top: 16px; }
+    .contact-details { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .contact-details div h4 { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
+    .contact-details div span { font-size: 0.95rem; font-weight: 500; }
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; background: var(--white); border: 1px solid rgba(0,0,0,0.08); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--dark); outline: none; transition: border-color 0.3s; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--red); }
+    .contact-form textarea { min-height: 100px; resize: vertical; }
+    .contact-form .btn { width: 100%; text-align: center; }
+    .form-note { font-size: 0.75rem; color: var(--gray-light); text-align: center; margin-top: -4px; }
+    @media (max-width: 640px) { .contact-inner { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 40px 0; border-top: 3px solid var(--red); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-brand .logo-icon { height: 24px; width: auto; }
+    .footer-brand-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; color: var(--white); }
+    .footer-brand-text .cta { color: var(--red); }
+    footer p { font-size: 0.75rem; color: var(--gray); }
+  </style>
+</head>
+<body>
+
+  <!--
+    Logo SVG — the house/roof chevron mark matching the original CTA Kokkinos logo.
+    Shape: upward-pointing roof with white diamond cutout.
+    Left face = pale pink, right face = red, shadow edge = darker red.
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <symbol id="cta-icon" viewBox="0 0 100 90">
+      <!-- Left face — pale pink -->
+      <polygon points="50,0 0,50 20,50 50,20" fill="#F4A7AB"/>
+      <!-- Right face — main red -->
+      <polygon points="50,0 100,50 80,50 50,20" fill="#E31B23"/>
+      <!-- Left bottom panel — medium pink -->
+      <polygon points="0,50 20,50 20,85 0,85" fill="#EE6068"/>
+      <!-- Right bottom panel — darker red -->
+      <polygon points="80,50 100,50 100,85 80,85" fill="#C4161C"/>
+      <!-- White diamond cutout in center -->
+      <polygon points="50,20 20,50 50,80 80,50" fill="#FFFFFF"/>
+      <!-- Subtle inner shadow on diamond left edge -->
+      <polygon points="50,20 20,50 50,50" fill="rgba(0,0,0,0.03)"/>
+    </symbol>
+  </svg>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo-link">
+        <svg class="logo-icon" viewBox="0 0 100 90" style="height:32px; width:auto;"><use href="#cta-icon"/></svg>
+        <div class="nav-logo-text"><span class="cta">CTA</span> KOKKINOS</div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">
+        <svg class="logo-icon" viewBox="0 0 100 90" style="height:72px; width:auto;"><use href="#cta-icon"/></svg>
+        <div class="hero-logo-text">
+          <div class="hero-logo-main"><span class="cta">CTA</span> KOKKINOS</div>
+          <div class="hero-logo-sub">Constructions LTD</div>
+        </div>
+      </div>
+      <h1>BUILDING WITH<br><span class="accent">PURPOSE.</span></h1>
+      <p>A family-founded construction company delivering quality craftsmanship and trusted results across Cyprus.</p>
+      <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">What We Do</h2>
+      <div class="services-list">
+        <div class="service-item">
+          <h3>RESIDENTIAL CONSTRUCTION</h3>
+          <p>Custom homes, villas, and apartments built to high standards of comfort and durability.</p>
+        </div>
+        <div class="service-item">
+          <h3>COMMERCIAL PROJECTS</h3>
+          <p>Offices, retail spaces, and developments delivered on time and on budget.</p>
+        </div>
+        <div class="service-item">
+          <h3>RENOVATIONS</h3>
+          <p>Modernising existing spaces with structural improvements and smart design.</p>
+        </div>
+        <div class="service-item">
+          <h3>CONCRETE & STRUCTURAL</h3>
+          <p>Foundations, retaining walls, and frameworks built with precision and strength.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-index="0">
+          <img src="photos/project-before.jpg" alt="Residential project — construction phase">
+          <div class="label">Construction Phase</div>
+        </div>
+        <div class="gallery-item" data-index="1">
+          <img src="photos/project-after.jpg" alt="Residential project — completed">
+          <div class="label">Completed</div>
+        </div>
+        <div class="gallery-item" data-index="2"><div class="placeholder"><span class="placeholder-icon">📷</span><span class="placeholder-text">Photo 3</span></div></div>
+        <div class="gallery-item" data-index="3"><div class="placeholder"><span class="placeholder-icon">📷</span><span class="placeholder-text">Photo 4</span></div></div>
+        <div class="gallery-item" data-index="4"><div class="placeholder"><span class="placeholder-icon">📷</span><span class="placeholder-text">Photo 5</span></div></div>
+        <div class="gallery-item" data-index="5"><div class="placeholder"><span class="placeholder-icon">📷</span><span class="placeholder-text">Photo 6</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <!-- CONTACT — form is NOT connected, see comment for setup instructions -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Let's Talk</h2>
+          <p>Interested in working together? Reach out and we'll get back to you.</p>
+          <div class="contact-details">
+            <div><h4>Location</h4><span>Nicosia, Cyprus</span></div>
+            <div><h4>Phone</h4><span>+357 XX XXX XXX</span></div>
+            <div><h4>Email</h4><span>info@ctakokkinos.com</span></div>
+          </div>
+        </div>
+        <!--
+          To make this form work: sign up at formspree.io, then change to:
+          <form action="https://formspree.io/f/YOUR_ID" method="POST" class="contact-form">
+          and remove the onsubmit handler.
+        -->
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone">
+          <textarea name="message" placeholder="Tell us about your project..."></textarea>
+          <button type="submit" class="btn btn-primary">Send Message →</button>
+          <p class="form-note">Form is not connected yet — messages won't be delivered.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 100 90" style="height:24px; width:auto;"><use href="#cta-icon"/></svg>
+          <div class="footer-brand-text"><span class="cta">CTA</span> KOKKINOS</div>
+        </div>
+        <p>&copy; 2026 CTA Kokkinos Constructions LTD. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sent ✓'; btn.style.background = '#2a7d3f';
+      setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
+    }
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const items = document.querySelectorAll('.gallery-item');
+    let currentIndex = 0;
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (!img) return;
+        currentIndex = parseInt(item.dataset.index);
+        lightboxImg.src = img.src; lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); });
+    function navigateLightbox(dir) {
+      const imgItems = [...items].filter(i => i.querySelector('img'));
+      if (!imgItems.length) return;
+      const indices = imgItems.map(i => parseInt(i.dataset.index));
+      let pos = indices.indexOf(currentIndex) + dir;
+      if (pos < 0) pos = indices.length - 1;
+      if (pos >= indices.length) pos = 0;
+      currentIndex = indices[pos];
+      const img = imgItems[pos].querySelector('img');
+      lightboxImg.src = img.src; lightboxImg.alt = img.alt;
+    }
+    document.getElementById('lightboxPrev').addEventListener('click', () => navigateLightbox(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => navigateLightbox(1));
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+  </script>
+
+</body>
+</html>

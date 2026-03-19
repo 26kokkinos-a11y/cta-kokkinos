@@ -42,10 +42,27 @@
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* FIX: use max-height clip instead of transform so menu never bleeds above the navbar */
     @media (max-width: 640px) {
       .hamburger { display: flex; }
-      .nav-links { position: fixed; top: 56px; left: 0; right: 0; background: rgba(26,26,26,0.98); flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; transform: translateY(-120%); transition: transform 0.3s; }
-      .nav-links.open { transform: translateY(0); }
+      .nav-links {
+        position: fixed;
+        top: 56px;
+        left: 0; right: 0;
+        background: rgba(26,26,26,0.98);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+      }
+      .nav-links.open {
+        max-height: 300px;
+        padding: 24px 0;
+      }
     }
 
     /* HERO */
@@ -140,18 +157,10 @@
 </head>
 <body>
 
-  <!--
-    Logo SVG — the house/roof chevron mark matching the original CTA Kokkinos logo.
-    Shape: upward-pointing roof with white diamond cutout.
-    Left face = pale pink, right face = red, shadow edge = darker red.
-  -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
     <symbol id="cta-icon" viewBox="0 0 100 88">
-      <!-- Left roof — pale pink -->
       <polygon points="50,0 0,48 22,54 50,26" fill="#F5ABB0"/>
-      <!-- Right roof — coral red -->
       <polygon points="50,0 50,26 78,54 100,48" fill="#E94753"/>
-      <!-- Right wall — dark red, flat bottom -->
       <polygon points="100,48 100,88 50,88 78,54" fill="#C4161C"/>
     </symbol>
   </svg>
@@ -243,7 +252,7 @@
     <img id="lightboxImg" src="" alt="">
   </div>
 
-  <!-- CONTACT — form is NOT connected, see comment for setup instructions -->
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="contact-inner">
